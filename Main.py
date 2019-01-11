@@ -3,9 +3,14 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 import json
+import schedule
+from datetime import datetime
+
+import threading    #多线程
 from urllib import parse, request
 
 import Config
+
 # 加载 UI
 import MainpageUI
 
@@ -18,6 +23,8 @@ ui.setupUi(Dialog)
 
 Dialog.show()   # 显示首页
 
+
+running = 1
 
 def get_info_stream():
     url = "https://api.hduhelp.com/infoStream/v3"
@@ -53,8 +60,6 @@ def set_weather_data():
 set_weather_data()
 
 
-
-
 # 获取课表信息
 def set_class_data():
     todayCount = infoStream['data']['schedule']['data']['today']
@@ -81,8 +86,24 @@ def set_ykt():
 
 set_ykt()
 
+schedule.every(1).second.do(ui.updateTime)
+schedule.every(1).second.do(ui.updateDate)
+
+def onUpdate():
+    while running:
+        schedule.run_pending()
+
+
+timer = threading.Thread(target=onUpdate)    # 多线程循环执行任务
+timer.start()
+
+
 # TODO:按照返回的数据调用函数
 #for item in infoStream['data']['_sort']:
 
+app.exec_()
 
-sys.exit(app.exec_())
+running = 0
+
+sys.exit()
+

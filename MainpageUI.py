@@ -2,7 +2,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import time
-import schedule #定时任务
 
 class Ui_MainPage(object):
     def setupUi(self, Dialog):
@@ -73,7 +72,7 @@ class Ui_MainPage(object):
         self.timeText.setGeometry(QtCore.QRect(235, 120, 380, 100))
         self.timeText.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.timeText.setObjectName("timeText")
-        self.timeText.setText("10:11:23")
+        self.timeText.setText("")
         self.timeText.setStyleSheet("QLabel{color:white; font-size:70px;}")
 
         # 日期
@@ -125,8 +124,11 @@ class Ui_MainPage(object):
 
     # 更新时间
     def updateTime(self):
-        self.timeText.setText()
-    schedule.every(1).second.do(updateTime)
+        self.timeText.setText(str(time.strftime('%H:%M:%S', time.localtime(time.time()))))
 
-
-
+    # 更新日期
+    def updateDate(self):
+        week = ['天', '一', '二', '三', '四', '五', '六']
+        date = str(time.strftime('%Y年%m月%d日', time.localtime(time.time())))
+        date += "星期" + week[int(time.strftime('%w', time.localtime(time.time())))]
+        self.dateText.setText(date)
