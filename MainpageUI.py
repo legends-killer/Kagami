@@ -1,6 +1,8 @@
 # 首页 UI
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import time
+import schedule #定时任务
 
 class Ui_MainPage(object):
     def setupUi(self, Dialog):
@@ -44,23 +46,46 @@ class Ui_MainPage(object):
 
         # 一卡通余额卡片
         self.yktCard = QtWidgets.QLabel(Dialog)
-        self.yktCard.setGeometry(QtCore.QRect(10, 10, 200, 90))
+        self.yktCard.setGeometry(QtCore.QRect(10, 10, 158, 72))
         self.yktCard.setText("")
-        self.yktCard.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.yktCard.setAlignment(QtCore.Qt.AlignLeft|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.yktCard.setObjectName("yktCard")
         self.yktCard.setStyleSheet("QLabel{background-image: url(assets/card/yikatong.png);}")
 
         # 一卡通余额
         self.yktBalance = QtWidgets.QLabel(Dialog)
-        self.yktBalance.setGeometry(QtCore.QRect(10, 10, 200, 90))
-        self.yktBalance.setText("10 元")
-        self.yktBalance.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.yktBalance.setGeometry(QtCore.QRect(45, 5, 100, 60))
+        self.yktBalance.setAlignment(QtCore.Qt.AlignLeft|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.yktBalance.setObjectName("yktBalance")
+        self.yktBalance.setText("")
         self.yktBalance.setStyleSheet("QLabel{color:white; font-size:30px;}")
 
+        # 一卡通今日花费
+        self.yktToday = QtWidgets.QLabel(Dialog)
+        self.yktToday.setGeometry(QtCore.QRect(50, 50, 80, 30))
+        self.yktToday.setAlignment(QtCore.Qt.AlignLeft|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.yktToday.setObjectName("yktToday")
+        self.yktToday.setText("")
+        self.yktToday.setStyleSheet("QLabel{color:white; font-size:12px;}")
+
+        # 时间
+        self.timeText = QtWidgets.QLabel(Dialog)
+        self.timeText.setGeometry(QtCore.QRect(235, 120, 380, 100))
+        self.timeText.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.timeText.setObjectName("timeText")
+        self.timeText.setText("10:11:23")
+        self.timeText.setStyleSheet("QLabel{color:white; font-size:70px;}")
+
+        # 日期
+        self.dateText = QtWidgets.QLabel(Dialog)
+        self.dateText.setGeometry(QtCore.QRect(400, 200, 210, 30))
+        self.dateText.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
+        self.dateText.setObjectName("dateText")
+        self.dateText.setText("2019年1月11日 星期五")
+        self.dateText.setStyleSheet("QLabel{color:white; font-size:15px;}")
 
         self.classSummary = QtWidgets.QLabel(Dialog)
-        self.classSummary.setGeometry(QtCore.QRect(17, 30, 161, 16))
+        self.classSummary.setGeometry(QtCore.QRect(17, 110, 161, 16))
         font = QtGui.QFont()
         font.setPointSize(18)
         self.classSummary.setFont(font)
@@ -92,4 +117,16 @@ class Ui_MainPage(object):
     # 设置课表文字总结
     def setClassSummary(self, summaryText):
         self.classSummary.setText(summaryText)
+
+    # 设置一卡通余额
+    def setCard(self, remaining, today):
+        self.yktBalance.setText(str(remaining) + "元")
+        self.yktToday.setText("今日：" + str(today) + "元")
+
+    # 更新时间
+    def updateTime(self):
+        self.timeText.setText()
+    schedule.every(1).second.do(updateTime)
+
+
 

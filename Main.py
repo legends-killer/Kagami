@@ -38,7 +38,7 @@ infoStream = get_info_stream()
 
 
 # 获取天气信息
-def get_weather_data():
+def set_weather_data():
 
     weatherIcon = infoStream['data']['weather']['data']['skyconNow']
     weatherStatus = infoStream['data']['weather']['data']['desc']
@@ -50,11 +50,13 @@ def get_weather_data():
     ui.setWeatherTemp(weatherTempMin, weatherTempMax)
 
 
-get_weather_data()
+set_weather_data()
+
+
 
 
 # 获取课表信息
-def get_class_data():
+def set_class_data():
     todayCount = infoStream['data']['schedule']['data']['today']
     tomorrowCount = infoStream['data']['schedule']['data']['tomorrow']
 
@@ -66,8 +68,18 @@ def get_class_data():
     ui.setClassSummary(summaryText)
 
 
-#get_class_data()
+#set_class_data()
 
+
+# 获取一卡通信息
+def set_ykt():
+    remaining = infoStream['data']['card']['data']['remaining']
+    today = infoStream['data']['card']['data']['today']
+
+    ui.setCard(remaining, today)
+
+
+set_ykt()
 
 # TODO:按照返回的数据调用函数
 #for item in infoStream['data']['_sort']:
