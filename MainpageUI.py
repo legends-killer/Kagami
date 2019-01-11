@@ -49,3 +49,6 @@ class Ui_MainPage(object):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.locaName.setText(_translate("Dialog", "杭州"))
         self.label_2.setText(_translate("Dialog", "今天共有 3 节课"))
+
+    def setWeatherIcon(self, iconID):
+        self.weatherIcon.setStyleSheet("QLabel{border-image: url(assets/weatherIcon/" + iconID + ".png); }")

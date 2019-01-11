@@ -68,7 +68,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QLabel{background:white;}</string>
+    <string notr="true">QLabel{background:white; background-size: 30px 30px;}</string>
    </property>
    <property name="text">
     <string/>
