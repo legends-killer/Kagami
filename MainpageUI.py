@@ -60,7 +60,7 @@ class Ui_MainPage(object):
         self.yktBalance.setAlignment(QtCore.Qt.AlignLeft|QtCore.Qt.AlignLeft|QtCore.Qt.AlignLeft)
         self.yktBalance.setObjectName("yktBalance")
         self.yktBalance.setText("")
-        self.yktBalance.setStyleSheet("QLabel{color:white; font-size:28px;}")
+        self.yktBalance.setStyleSheet("QLabel{color:rgba(255,255,255,0.8); font-size:28px;}")
 
         # 一卡通今日花费
         self.yktToday = QtWidgets.QLabel(Dialog)
@@ -68,7 +68,7 @@ class Ui_MainPage(object):
         self.yktToday.setAlignment(QtCore.Qt.AlignLeft|QtCore.Qt.AlignLeft|QtCore.Qt.AlignLeft)
         self.yktToday.setObjectName("yktToday")
         self.yktToday.setText("")
-        self.yktToday.setStyleSheet("QLabel{color:white; font-size:12px;}")
+        self.yktToday.setStyleSheet("QLabel{color:rgba(255,255,255,0.6); font-size:12px;}")
 
         # 宿舍电费
         self.powerRate = QtWidgets.QLabel(Dialog)
@@ -76,7 +76,7 @@ class Ui_MainPage(object):
         self.powerRate.setAlignment(QtCore.Qt.AlignLeft|QtCore.Qt.AlignLeft|QtCore.Qt.AlignLeft)
         self.powerRate.setObjectName("powerRate")
         self.powerRate.setText("")
-        self.powerRate.setStyleSheet("QLabel{color:white; font-size:12px;}")
+        self.powerRate.setStyleSheet("QLabel{color:rgba(255,255,255,0.6); font-size:12px;}")
 
         # 时间
         self.timeText = QtWidgets.QLabel(Dialog)
@@ -94,8 +94,9 @@ class Ui_MainPage(object):
         self.dateText.setText("2019年1月11日 星期五")
         self.dateText.setStyleSheet("QLabel{color:white; font-size:15px;}")
 
+        # 上课信息
         self.classSummary = QtWidgets.QLabel(Dialog)
-        self.classSummary.setGeometry(QtCore.QRect(17, 110, 161, 16))
+        self.classSummary.setGeometry(QtCore.QRect(17, 130, 161, 16))
         font = QtGui.QFont()
         font.setPointSize(18)
         self.classSummary.setFont(font)
@@ -106,15 +107,14 @@ class Ui_MainPage(object):
 
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
-        def newTag(self, context):
-            self.tag = QtWidgets.QLabel(Dialog)
-            self.tag.setGeometry(QtCore.QRect(400, 260, 210, 30))
-            self.tag.setAlignment(QtCore.Qt.AlignLeft | QtCore.Qt.AlignLeft | QtCore.Qt.AlignLeft)
-            self.tag.setObjectName("tag_1")
-            self.tag.setText("这里是备忘")
-            self.tag.setStyleSheet("QLabel{color:white; font-size:12px; background-color:rgba(0,0,0,0.5)}")
-
-        newTag(self, 111)
+        # Tag
+        self.tag = QtWidgets.QLabel(Dialog)
+        self.tag.setGeometry(QtCore.QRect(400, 260, 210, 100))
+        self.tag.setAlignment(QtCore.Qt.AlignLeft | QtCore.Qt.AlignLeft | QtCore.Qt.AlignLeft)
+        self.tag.setObjectName("tag_1")
+        self.tag.setWordWrap(True)
+        self.tag.setText("这里是已经留出了 API 接口的备忘信息。我可以用手机输入信息然后投到上面。")
+        self.tag.setStyleSheet("QLabel{color:white; font-size:12px; background-color:rgba(0,0,0,0.5); padding:5px}")
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
