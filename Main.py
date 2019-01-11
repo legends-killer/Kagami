@@ -38,7 +38,7 @@ def get_info_stream():
 
     response = request.urlopen(req)
     response = response.read()
-    response = json.loads(response)
+    response = json.loads(response.decode('utf-8'))
 
     return response
 
