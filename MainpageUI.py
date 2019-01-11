@@ -42,13 +42,30 @@ class Ui_MainPage(object):
         self.locaName.setObjectName("locaName")
         self.locaName.setStyleSheet("QLabel{color:white;}")
 
+        # 一卡通余额卡片
+        self.yktCard = QtWidgets.QLabel(Dialog)
+        self.yktCard.setGeometry(QtCore.QRect(10, 10, 200, 90))
+        self.yktCard.setText("")
+        self.yktCard.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.yktCard.setObjectName("yktCard")
+        self.yktCard.setStyleSheet("QLabel{background-image: url(assets/card/yikatong.png);}")
+
+        # 一卡通余额
+        self.yktBalance = QtWidgets.QLabel(Dialog)
+        self.yktBalance.setGeometry(QtCore.QRect(10, 10, 200, 90))
+        self.yktBalance.setText("10 元")
+        self.yktBalance.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.yktBalance.setObjectName("yktBalance")
+        self.yktBalance.setStyleSheet("QLabel{color:white; font-size:30px;}")
+
 
         self.classSummary = QtWidgets.QLabel(Dialog)
         self.classSummary.setGeometry(QtCore.QRect(17, 30, 161, 16))
         font = QtGui.QFont()
         font.setPointSize(18)
         self.classSummary.setFont(font)
-        self.classSummary.setObjectName("label_2")
+        self.classSummary.setStyleSheet("QLabel{color:white;}")
+        self.classSummary.setObjectName("classSummary")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -71,4 +88,8 @@ class Ui_MainPage(object):
     # 设置天气温度
     def setWeatherTemp(self, min, max):
         self.weatherTemp.setText(str(min) + " ℃ - " + str(max) + " ℃")
+
+    # 设置课表文字总结
+    def setClassSummary(self, summaryText):
+        self.classSummary.setText(summaryText)
 

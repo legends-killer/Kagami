@@ -49,14 +49,28 @@ def get_weather_data():
     ui.setWeatherStatus(weatherStatus)
     ui.setWeatherTemp(weatherTempMin, weatherTempMax)
 
+
 get_weather_data()
 
 
 # 获取课表信息
-#def get_class_data():
+def get_class_data():
+    todayCount = infoStream['data']['schedule']['data']['today']
+    tomorrowCount = infoStream['data']['schedule']['data']['tomorrow']
+
+    if len(todayCount) == 0:
+        summaryText = "今天没有课！开心！"
+    else:
+        summaryText = "今天你有" + todayCount + "节课"
+
+    ui.setClassSummary(summaryText)
 
 
+#get_class_data()
 
+
+# TODO:按照返回的数据调用函数
+#for item in infoStream['data']['_sort']:
 
 
 sys.exit(app.exec_())
