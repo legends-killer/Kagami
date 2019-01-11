@@ -107,16 +107,13 @@ schedule.every(5).seconds.do(ui.updateDate)
 schedule.every(5).minutes.do(init)
 
 # 刷新天气
-schedule.every(5).minutes.do(ui.setWeatherIcon)
-schedule.every(5).minutes.do(ui.setWeatherStatus)
-schedule.every(5).minutes.do(ui.setWeatherTemp)
-
-
+schedule.every(5).minutes.do(set_weather_data)
 
 # 刷新一卡通
-schedule.every(5).minutes.do(ui.setWeatherIcon)
-schedule.every(5).minutes.do(ui.setWeatherStatus)
-schedule.every(5).minutes.do(ui.setWeatherTemp)
+schedule.every(5).minutes.do(set_ykt)
+
+# 刷新电费
+schedule.every(5).minutes.do(set_power_rate)
 
 def onUpdate():
     while running:
