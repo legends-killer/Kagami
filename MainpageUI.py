@@ -4,6 +4,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import time
 
 class Ui_MainPage(object):
+
+    tag = []    #备忘录
+
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(640, 480)
@@ -45,27 +48,35 @@ class Ui_MainPage(object):
 
         # 一卡通余额卡片
         self.yktCard = QtWidgets.QLabel(Dialog)
-        self.yktCard.setGeometry(QtCore.QRect(10, 10, 158, 72))
+        self.yktCard.setGeometry(QtCore.QRect(10, 10, 175, 80))
         self.yktCard.setText("")
-        self.yktCard.setAlignment(QtCore.Qt.AlignLeft|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.yktCard.setAlignment(QtCore.Qt.AlignLeft|QtCore.Qt.AlignLeft|QtCore.Qt.AlignLeft)
         self.yktCard.setObjectName("yktCard")
         self.yktCard.setStyleSheet("QLabel{background-image: url(assets/card/yikatong.png);}")
 
         # 一卡通余额
         self.yktBalance = QtWidgets.QLabel(Dialog)
-        self.yktBalance.setGeometry(QtCore.QRect(45, 5, 100, 60))
-        self.yktBalance.setAlignment(QtCore.Qt.AlignLeft|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.yktBalance.setGeometry(QtCore.QRect(75, 15, 100, 60))
+        self.yktBalance.setAlignment(QtCore.Qt.AlignLeft|QtCore.Qt.AlignLeft|QtCore.Qt.AlignLeft)
         self.yktBalance.setObjectName("yktBalance")
         self.yktBalance.setText("")
-        self.yktBalance.setStyleSheet("QLabel{color:white; font-size:30px;}")
+        self.yktBalance.setStyleSheet("QLabel{color:white; font-size:28px;}")
 
         # 一卡通今日花费
         self.yktToday = QtWidgets.QLabel(Dialog)
-        self.yktToday.setGeometry(QtCore.QRect(50, 50, 80, 30))
-        self.yktToday.setAlignment(QtCore.Qt.AlignLeft|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.yktToday.setGeometry(QtCore.QRect(75, 50, 80, 30))
+        self.yktToday.setAlignment(QtCore.Qt.AlignLeft|QtCore.Qt.AlignLeft|QtCore.Qt.AlignLeft)
         self.yktToday.setObjectName("yktToday")
         self.yktToday.setText("")
         self.yktToday.setStyleSheet("QLabel{color:white; font-size:12px;}")
+
+        # 宿舍电费
+        self.powerRate = QtWidgets.QLabel(Dialog)
+        self.powerRate.setGeometry(QtCore.QRect(75, 65, 130, 30))
+        self.powerRate.setAlignment(QtCore.Qt.AlignLeft|QtCore.Qt.AlignLeft|QtCore.Qt.AlignLeft)
+        self.powerRate.setObjectName("powerRate")
+        self.powerRate.setText("")
+        self.powerRate.setStyleSheet("QLabel{color:white; font-size:12px;}")
 
         # 时间
         self.timeText = QtWidgets.QLabel(Dialog)
@@ -92,14 +103,26 @@ class Ui_MainPage(object):
         self.classSummary.setObjectName("classSummary")
 
         self.retranslateUi(Dialog)
+
         QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+        def newTag(self, context):
+            self.tag = QtWidgets.QLabel(Dialog)
+            self.tag.setGeometry(QtCore.QRect(400, 260, 210, 30))
+            self.tag.setAlignment(QtCore.Qt.AlignLeft | QtCore.Qt.AlignLeft | QtCore.Qt.AlignLeft)
+            self.tag.setObjectName("tag_1")
+            self.tag.setText("这里是备忘")
+            self.tag.setStyleSheet("QLabel{color:white; font-size:12px; background-color:rgba(0,0,0,0.5)}")
+
+        newTag(self, 111)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Kagami"))   # 窗体标题
         self.locaName.setText(_translate("Dialog", "杭州"))
 
-        self.classSummary.setText(_translate("Dialog", "今天共有 3 节课"))
+        self.classSummary.setText(_translate("Dialog", ""))
+
 
     # 设置天气图标
     def setWeatherIcon(self, iconID):
@@ -119,8 +142,12 @@ class Ui_MainPage(object):
 
     # 设置一卡通余额
     def setCard(self, remaining, today):
-        self.yktBalance.setText(str(remaining) + "元")
-        self.yktToday.setText("今日：" + str(today) + "元")
+        self.yktBalance.setText(str(remaining) + " 元")
+        self.yktToday.setText("今日花费 " + str(today) + " 元")
+
+    # 设置电费
+    def setPowerRate(self, powerRate):
+        self.powerRate.setText("宿舍电费 " + str(powerRate) + " 元")
 
     # 更新时间
     def updateTime(self):
@@ -129,6 +156,6 @@ class Ui_MainPage(object):
     # 更新日期
     def updateDate(self):
         week = ['天', '一', '二', '三', '四', '五', '六']
-        date = str(time.strftime('%Y年%m月%d日', time.localtime(time.time())))
+        date = str(time.strftime('%Y年%m月%d日 ', time.localtime(time.time())))
         date += "星期" + week[int(time.strftime('%w', time.localtime(time.time())))]
         self.dateText.setText(date)

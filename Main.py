@@ -10,6 +10,7 @@ import threading    #多线程
 from urllib import parse, request
 
 import Config
+import powerRate
 
 # 加载 UI
 import MainpageUI
@@ -42,7 +43,7 @@ def get_info_stream():
 
 
 infoStream = get_info_stream()
-
+powerRate.PowerRate()
 
 # 获取天气信息
 def set_weather_data():
@@ -73,7 +74,7 @@ def set_class_data():
     ui.setClassSummary(summaryText)
 
 
-#set_class_data()
+set_class_data()
 
 
 # 获取一卡通信息
@@ -86,6 +87,18 @@ def set_ykt():
 
 set_ykt()
 
+
+# 设置宿舍电费
+def set_power_rate():
+    price = powerRate.PowerRate()
+    price = price.get()
+
+    ui.setPowerRate(price)
+
+set_power_rate()
+
+
+# ========= 定时任务 =========
 schedule.every(1).second.do(ui.updateTime)
 schedule.every(1).second.do(ui.updateDate)
 
@@ -98,12 +111,8 @@ timer = threading.Thread(target=onUpdate)    # 多线程循环执行任务
 timer.start()
 
 
-# TODO:按照返回的数据调用函数
-#for item in infoStream['data']['_sort']:
-
+# 退出
 app.exec_()
-
 running = 0
-
 sys.exit()
 
