@@ -7,15 +7,13 @@ import time
 
 class Ui_MainPage(object):
 
-    tag = []    #备忘录
-
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(640, 480)
+        Dialog.resize(1024, 768)
         Dialog.setStyleSheet("QDialog{background-image: url(assets/background/01.jpg); background-position:center;}")
 
         self.weatherTemp = QtWidgets.QLabel(Dialog)
-        self.weatherTemp.setGeometry(QtCore.QRect(520, 80, 90, 20))
+        self.weatherTemp.setGeometry(QtCore.QRect(910, 98, 90, 20))
         font = QtGui.QFont()
         font.setPointSize(15)
         self.weatherTemp.setFont(font)
@@ -25,7 +23,7 @@ class Ui_MainPage(object):
         self.weatherTemp.setStyleSheet("QLabel{color:white;}")
 
         self.weatherText = QtWidgets.QLabel(Dialog)
-        self.weatherText.setGeometry(QtCore.QRect(460, 55, 150, 20))
+        self.weatherText.setGeometry(QtCore.QRect(850, 75, 150, 20))
         font = QtGui.QFont()
         font.setPointSize(15)
         self.weatherText.setFont(font)
@@ -35,13 +33,13 @@ class Ui_MainPage(object):
         self.weatherText.setStyleSheet("QLabel{color:white;}")
 
         self.weatherIcon = QtWidgets.QLabel(Dialog)
-        self.weatherIcon.setGeometry(QtCore.QRect(497, 10, 51, 51))
+        self.weatherIcon.setGeometry(QtCore.QRect(880, 25, 51, 51))
         self.weatherIcon.setStyleSheet("QLabel{background:white;}")
         self.weatherIcon.setText("")
         self.weatherIcon.setObjectName("weatherIcon")
 
         self.locaName = QtWidgets.QLabel(Dialog)
-        self.locaName.setGeometry(QtCore.QRect(557, 20, 71, 31))
+        self.locaName.setGeometry(QtCore.QRect(947, 38, 71, 31))
         font = QtGui.QFont()
         font.setPointSize(27)
         self.locaName.setFont(font)
@@ -50,7 +48,7 @@ class Ui_MainPage(object):
 
         # 一卡通余额卡片
         self.yktCard = QtWidgets.QLabel(Dialog)
-        self.yktCard.setGeometry(QtCore.QRect(10, 10, 175, 80))
+        self.yktCard.setGeometry(QtCore.QRect(20, 30, 210, 90))
         self.yktCard.setText("")
         self.yktCard.setAlignment(QtCore.Qt.AlignLeft|QtCore.Qt.AlignLeft|QtCore.Qt.AlignLeft)
         self.yktCard.setObjectName("yktCard")
@@ -58,7 +56,7 @@ class Ui_MainPage(object):
 
         # 一卡通余额
         self.yktBalance = QtWidgets.QLabel(Dialog)
-        self.yktBalance.setGeometry(QtCore.QRect(75, 15, 100, 60))
+        self.yktBalance.setGeometry(QtCore.QRect(85, 38, 100, 60))
         self.yktBalance.setAlignment(QtCore.Qt.AlignLeft|QtCore.Qt.AlignLeft|QtCore.Qt.AlignLeft)
         self.yktBalance.setObjectName("yktBalance")
         self.yktBalance.setText("")
@@ -66,7 +64,7 @@ class Ui_MainPage(object):
 
         # 一卡通今日花费
         self.yktToday = QtWidgets.QLabel(Dialog)
-        self.yktToday.setGeometry(QtCore.QRect(75, 50, 80, 30))
+        self.yktToday.setGeometry(QtCore.QRect(85, 76, 100, 60))
         self.yktToday.setAlignment(QtCore.Qt.AlignLeft|QtCore.Qt.AlignLeft|QtCore.Qt.AlignLeft)
         self.yktToday.setObjectName("yktToday")
         self.yktToday.setText("")
@@ -74,7 +72,7 @@ class Ui_MainPage(object):
 
         # 宿舍电费
         self.powerRate = QtWidgets.QLabel(Dialog)
-        self.powerRate.setGeometry(QtCore.QRect(75, 65, 130, 30))
+        self.powerRate.setGeometry(QtCore.QRect(85, 91, 130, 30))
         self.powerRate.setAlignment(QtCore.Qt.AlignLeft|QtCore.Qt.AlignLeft|QtCore.Qt.AlignLeft)
         self.powerRate.setObjectName("powerRate")
         self.powerRate.setText("")
@@ -82,7 +80,7 @@ class Ui_MainPage(object):
 
         # 时间
         self.timeText = QtWidgets.QLabel(Dialog)
-        self.timeText.setGeometry(QtCore.QRect(235, 120, 380, 100))
+        self.timeText.setGeometry(QtCore.QRect(630, 140, 380, 100))
         self.timeText.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.timeText.setObjectName("timeText")
         self.timeText.setText("")
@@ -90,7 +88,7 @@ class Ui_MainPage(object):
 
         # 日期
         self.dateText = QtWidgets.QLabel(Dialog)
-        self.dateText.setGeometry(QtCore.QRect(400, 200, 210, 30))
+        self.dateText.setGeometry(QtCore.QRect(795, 220, 210, 30))
         self.dateText.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.dateText.setObjectName("dateText")
         self.dateText.setText("2019年1月11日 星期五")
@@ -98,7 +96,7 @@ class Ui_MainPage(object):
 
         # 上课信息
         self.classSummary = QtWidgets.QLabel(Dialog)
-        self.classSummary.setGeometry(QtCore.QRect(17, 130, 161, 16))
+        self.classSummary.setGeometry(QtCore.QRect(20, 140, 200, 100))
         font = QtGui.QFont()
         font.setPointSize(18)
         self.classSummary.setFont(font)
@@ -111,7 +109,7 @@ class Ui_MainPage(object):
 
         # Tag
         self.tag = QtWidgets.QLabel(Dialog)
-        self.tag.setGeometry(QtCore.QRect(400, 260, 210, 100))
+        self.tag.setGeometry(QtCore.QRect(800, 300, 210, 100))
         self.tag.setAlignment(QtCore.Qt.AlignLeft | QtCore.Qt.AlignLeft | QtCore.Qt.AlignLeft)
         self.tag.setObjectName("tag_1")
         self.tag.setWordWrap(True)
@@ -145,11 +143,11 @@ class Ui_MainPage(object):
     # 设置一卡通余额
     def setCard(self, remaining, today):
         self.yktBalance.setText(str(remaining) + " 元")
-        self.yktToday.setText("今日花费 " + str(today) + " 元")
+        self.yktToday.setText("今日花费：" + str(today) + " 元")
 
     # 设置电费
     def setPowerRate(self, powerRate):
-        self.powerRate.setText("宿舍电费 " + str(powerRate) + " 元")
+        self.powerRate.setText("宿舍电费：" + str(powerRate) + " 元")
 
     # 更新时间
     def updateTime(self):

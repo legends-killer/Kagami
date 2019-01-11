@@ -42,9 +42,10 @@ def get_info_stream():
 
     return response
 
-
 infoStream = get_info_stream()
-powerRate.PowerRate()
+
+def init():
+    infoStream = get_info_stream()
 
 # 获取天气信息
 def set_weather_data():
@@ -101,7 +102,21 @@ set_power_rate()
 
 # ========= 定时任务 =========
 schedule.every(1).second.do(ui.updateTime)
-schedule.every(1).second.do(ui.updateDate)
+schedule.every(5).seconds.do(ui.updateDate)
+
+schedule.every(5).minutes.do(init)
+
+# 刷新天气
+schedule.every(5).minutes.do(ui.setWeatherIcon)
+schedule.every(5).minutes.do(ui.setWeatherStatus)
+schedule.every(5).minutes.do(ui.setWeatherTemp)
+
+
+
+# 刷新一卡通
+schedule.every(5).minutes.do(ui.setWeatherIcon)
+schedule.every(5).minutes.do(ui.setWeatherStatus)
+schedule.every(5).minutes.do(ui.setWeatherTemp)
 
 def onUpdate():
     while running:
