@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 # 首页 UI
 
 from PyQt5 import QtCore, QtGui, QtWidgets

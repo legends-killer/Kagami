@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 # 电费爬虫
 
 from urllib import parse, request

@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 # Kagami 入口
 
 from PyQt5 import QtCore, QtGui, QtWidgets
