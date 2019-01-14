@@ -13,7 +13,7 @@ class Ui_MainPage(object):
         Dialog.setStyleSheet("QDialog{background-image: url(assets/background/01.jpg); background-position:center;}")
 
         self.weatherTemp = QtWidgets.QLabel(Dialog)
-        self.weatherTemp.setGeometry(QtCore.QRect(855, 105, 150, 50))
+        self.weatherTemp.setGeometry(QtCore.QRect(755, 115, 250, 50))
         font = QtGui.QFont()
         font.setPointSize(26)
         self.weatherTemp.setFont(font)
@@ -23,7 +23,7 @@ class Ui_MainPage(object):
         self.weatherTemp.setStyleSheet("QLabel{color:white;}")
 
         self.weatherText = QtWidgets.QLabel(Dialog)
-        self.weatherText.setGeometry(QtCore.QRect(655, 150, 350, 50))
+        self.weatherText.setGeometry(QtCore.QRect(655, 170, 350, 50))
         font = QtGui.QFont()
         font.setPointSize(30)
         self.weatherText.setFont(font)
@@ -33,7 +33,7 @@ class Ui_MainPage(object):
         self.weatherText.setStyleSheet("QLabel{color:white;}")
 
         self.weatherIcon = QtWidgets.QLabel(Dialog)
-        self.weatherIcon.setGeometry(QtCore.QRect(760, 25, 120, 120))
+        self.weatherIcon.setGeometry(QtCore.QRect(760, 15, 120, 120))
         self.weatherIcon.setStyleSheet("QLabel{background:white;}")
         self.weatherIcon.setText("")
         self.weatherIcon.setObjectName("weatherIcon")
@@ -97,7 +97,7 @@ class Ui_MainPage(object):
 
         # 上课信息
         self.classSummary = QtWidgets.QLabel(Dialog)
-        self.classSummary.setGeometry(QtCore.QRect(20, 230, 300, 60))
+        self.classSummary.setGeometry(QtCore.QRect(20, 230, 500, 60))
         font = QtGui.QFont()
         font.setPointSize(30)
         self.classSummary.setFont(font)
